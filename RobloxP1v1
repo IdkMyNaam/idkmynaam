@@ -1,0 +1,18 @@
+local Players = game:GetService("Players"):GetChildren()
+local ESP = Instance.new("Highlight")
+local LPlayer = game.Players.LocalPlayer
+ESP.Name = "ESP"
+while true do
+    for i,v in pairs(Players) do
+        repeat wait() until v.Character
+         local EPSC = ESP:Clone()
+         EPSC.Adornee = v.Character
+         EPSC.Parent = v.Character:FindFirstChild("HumanoidRootPart")
+    end
+    game.Players.PlayerAdded:Connect(function(player)
+            local EPSC = ESP:Clone()
+            repeat wait() until player.Character
+            EPSC.Adornee = player.Character
+            EPSC.Parent = player.Character:FindFirstChild("HumanoidRootPart")
+        end)
+    end
