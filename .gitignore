@@ -1,41 +1,18 @@
-# Compiled Lua sources
-luac.out
-
-# luarocks build files
-*.src.rock
-*.zip
-*.tar.gz
-
-# Object files
-*.o
-*.os
-*.ko
-*.obj
-*.elf
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-*.def
-*.exp
-
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
+local Players = game:GetService("Players"):GetChildren()
+local ESP = Instance.new("Highlight")
+local LPlayer = game.Players.LocalPlayer
+ESP.Name = "ESP"
+while true do
+    for i,v in pairs(Players) do
+        repeat wait() until v.Character
+         local EPSC = ESP:Clone()
+         EPSC.Adornee = v.Character
+         EPSC.Parent = v.Character:FindFirstChild("HumanoidRootPart")
+    end
+    game.Players.PlayerAdded:Connect(function(player)
+            local EPSC = ESP:Clone()
+            repeat wait() until player.Character
+            EPSC.Adornee = player.Character
+            EPSC.Parent = player.Character:FindFirstChild("HumanoidRootPart")
+        end)
+    end
